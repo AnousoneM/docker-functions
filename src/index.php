@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="p-4">
+<body class="p-4 text-center fs-2">
     <a href="exercices.php">Exercices</a>
     <br>
     <a href="gallery.php">Gallery</a>

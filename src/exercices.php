@@ -29,12 +29,14 @@ function estPair($nombre)
 }
 
 // fonction Calculer la somme de deux nombres
-function somme($a, $b){
+function somme($a, $b)
+{
     echo "La somme de $a + $b = " . $a + $b;
 }
 
 // fonction Trouver le maximum de deux nombres
-function maximum($a, $b){
+function maximum($a, $b)
+{
     if ($a > $b) {
         echo "le nombre le plus grand entre $a et $b, est $a";
     } else {
@@ -43,13 +45,16 @@ function maximum($a, $b){
 }
 
 // fonction Trouver le maximum d’une série de nombres
-function maximumMulti(...$allNumbers){
+function maximumMulti(...$allNumbers)
+{
+    // on effectue un var_dump pour voir la strucutre $allNumbers;
     var_dump($allNumbers);
-    echo "Le nombre le plus grand, est " . max($allNumbers);
+    echo '<div class="text-start">Le nombre le plus grand, est ' . max($allNumbers) . '</div>';
 }
 
 // fonction Compter les lettres d’une chaîne
-function longueur($string){
+function longueur($string)
+{
     echo "Le nombre de lettre dans le mot : $string est de " . strlen($string);
 }
 
@@ -73,33 +78,40 @@ function longueur($string){
 
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <h1 class="text-center py-4 bg-primary text-white">Les Functions</h1>
+    <a href="index.php" class="text-center py-4 bg-primary text-white text-decoration-none h1">Les Functions</a>
 
     <main class="container py-4">
 
         <div class="row justify-content-center">
             <p>Exercice 1</p>
             <p><?= direBonjour() ?></p>
+            <hr>
 
             <p>Exercice 2</p>
             <p><?php saluer("Anousone");
                 saluer("Kevin");
                 saluer("Sarah") ?></p>
+            <hr>
 
             <p>Exercice 3</p>
             <p>Le carré du nombre : 3 est <?= carre(3) ?></p>
+            <hr>
 
             <p>Exercice 4</p>
             <p><?php estPair(15) ?></p>
+            <hr>
 
             <p>Exercice 5</p>
-            <p><?php somme(1,9) ?></p>
+            <p><?php somme(1, 9) ?></p>
+            <hr>
 
             <p>Exercice 6</p>
-            <p><?php maximum(13,9) ?></p>
+            <p><?php maximum(13, 9) ?></p>
+            <hr>
 
             <p>Exercice 6bis</p>
-            <p><?php maximumMulti(13,9, 99, 56, 44, 33, 90, 7) ?></p>
+            <p><?php maximumMulti(13, 9, 99, 56, 44, 33, 90, 7) ?></p>
+            <hr>
 
             <p>Exercice 7</p>
             <p><?php longueur('anticonstitutionnellement') ?></p>

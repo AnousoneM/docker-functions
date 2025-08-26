@@ -2,33 +2,47 @@
 
 require_once 'data/users.php';
 
+// je créer une fonction avec 3 paramètres : $sexe et $total auront des paramètres par défaut
 function createGallery($array, $sexe = "all", $total = "all")
 {
+    // je mets un var_dump pour controller mes params'
+    // var_dump($array, $sexe, $total);
 
-    var_dump($array, $sexe, $total);
-    
+    // Je mélange mon tableau
+    shuffle($array);
+
+    // je définis une variable $max qui vaut 0 pour démarrer et qui va correspondre au nombre de photos affichées
     $max = 0;
+
+    echo '<div class="row justify-content-center">';
 
     foreach ($array as $person) {
 
+        // si la personne n'est pas du bon sexe, je ne l'affiche pas avec `continue`;
+        // bien pensez à mettre en plus la condition != 'all', pour prendre en compte l'affichage par défaut
         if ($person['sexe'] != $sexe && $sexe != 'all') {
             continue;
         }
 
-        
+        // si nous avons atteint le maximum de photo demandées, on arrête de boucler avec `break`;
+        // bien pensez à mettre en plus la condition != 'all', pour prendre en compte l'affichage par défaut
         if ($max == $total && $max != 'all') {
             break;
         }
-        
+
+        // j'incremente ma variable à chaque itération
         $max++;
 
-        echo $person['photo'];
-
+        // je echo ma div contenant mon image et les infos
+        echo '<div class="col-3 border border-secondary shadow rounded p-3 m-3">';
+        echo '<img src="assets/img/' . $person['photo'] . '" class="img-fluid border mb-2" alt="' . $person['nom'] . '">';
+        echo '<p class="mb-1">Nom : ' . $person['nom'] . '</p>';
+        echo '<p class="mb-1">Prénom : ' . $person['prenom'] . '</p>';
+        echo '</div>';
     }
+
+    echo '</div>';
 }
-
-
-createGallery($users, sexe: "Femme");
 
 ?>
 
@@ -47,17 +61,39 @@ createGallery($users, sexe: "Femme");
 
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <h1 class="text-center py-4 bg-dark text-white">Custom Gallery</h1>
+    <a href="index.php" class="text-center py-4 bg-dark text-white h1 text-decoration-none">Custom Gallery</a>
 
     <main class="container py-4">
 
+        <!-- structure de base à creer à l'aide de ma fonction
         <div class="row justify-content-center">
-            <div class="col-3 border border-secondary shadow rounded p-3">
+
+            <div class="col-3 border border-secondary shadow rounded p-3 m-3">
                 <img src="assets/img/photo_01.jpg" class="img-fluid border mb-2" alt="Nom">
                 <p class="mb-1">Nom : Jenny</p>
                 <p class="mb-1">Prénom : JOSH</p>
             </div>
-        </div>
+
+        </div> -->
+
+        <!-- affichage des galleries avec différents params -->
+
+        <p class="h2 text-center">une gallerie de 10 Femmes</p>
+        <?php 
+        // Appel de la fonction à l'aide des arguments nommées permettant de ne pas avoir d'erreurs
+        createGallery($users, total: 10, sexe: 'Femme'); ?>
+        <hr>
+
+        <p class="h2 text-center">une gallerie de 5 Femmes</p>
+        <?php createGallery($users, 'Femme', 5); ?>
+        <hr>
+
+        <p class="h2 text-center">une gallerie de 5 Hommes</p>
+        <?php createGallery($users, 'Homme', 5); ?>
+        <hr>
+
+        <p class="h2 text-center">une gallerie de tous le monde</p>
+        <?php createGallery($users); ?>
 
     </main>
 
