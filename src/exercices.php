@@ -55,7 +55,7 @@ function maximumMulti(...$allNumbers)
 // fonction Compter les lettres d’une chaîne
 function longueur($string)
 {
-    echo "Le nombre de lettre dans le mot : $string est de " . strlen($string);
+    echo "Le nombre de lettre dans le mot : $string est de " . strlen($string) . "lettres";
 }
 
 
